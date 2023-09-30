@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:isolate';
 import 'package:exercise_project/src/constants/api.dart';
 import 'package:exercise_project/src/core/logger.dart';
 import 'package:exercise_project/src/features/home/models/todo_model.dart';
@@ -19,5 +20,34 @@ class TodoService {
       Logger.logException(e);
     }
     return null;
+  }
+
+  void callOnMain() async {
+    final resultPort = ReceivePort();
+    const jsonString = '[{"name":"java"},{"name":"kotlin"}]';
+
+    await Isolate.spawn(
+      jsonDecodeIsolate,
+      [resultPort.sendPort, jsonString],
+      onError: resultPort.sendPort,
+      onExit: resultPort.sendPort,
+    );
+
+    resultPort.listen((jsons) {
+      if (jsons == null) return;
+      for (final json in jsons) {
+        print("object : $json");
+      }
+    });
+  }
+
+  Future<void> jsonDecodeIsolate(List<dynamic> args) async {
+    final SendPort resultPort = args[0];
+    final String jsonData = args[1];
+
+    final data = await json.decode(jsonData);
+
+    // kill isolate and return data
+    Isolate.exit(resultPort, data);
   }
 }
