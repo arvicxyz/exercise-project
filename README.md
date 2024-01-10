@@ -33,8 +33,6 @@ This project is made using Flutter as a test project last September 2023. It sho
     
     <img src="./screenshots/structure.png" alt="Structure" />
 
-<br/>
-
 3. **Testing:**
 
     Write unit tests or widget tests for critical parts of your application.
