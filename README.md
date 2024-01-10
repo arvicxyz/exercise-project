@@ -30,8 +30,8 @@ This project is made using Flutter as a test project last September 2023. It sho
     4. **Screen 3:**
         - Implement Screen 3, which is triggered by Button 3 from Home Screen.
         - This screen should display the text input from Screen 2 in reverse.
-    
-    <img src="./screenshots/structure.png" alt="Structure" />
+
+<img src="./screenshots/structure.png" alt="Structure" />
 
 3. **Testing:**
 
