@@ -39,9 +39,9 @@ This project is made using Flutter as a test project last September 2023. It sho
 
 ## Packages Used
 ```
-http: ^1.1.0
-shared_preferences: ^2.2.1
-logger: ^2.0.2
+http
+shared_preferences
+logger
 ```
 
 This project also uses [FVM - Flutter Version Management](https://fvm.app/) - a simple CLI to manage Flutter SDK versions.
